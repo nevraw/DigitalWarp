@@ -23,70 +23,34 @@ function buttonHandler() {
  });
 }
 
-// Radio control for hiding battery
-var $hideBattery;
-$("input[name=hideBattery]").change(function () {
- $hideBattery = parseInt(this.value);
-});
-
-// Radio control for animation on shake
-var $noAnimOnShake;
-$("input[name=noAnimOnShake]").change(function () {
- $noAnimOnShake = parseInt(this.value);
-});
-
 
 function loadOptions() {
- if (localStorage.hideBattery) {
-  $hideBattery = localStorage.hideBattery;
-//  console.log('localStorage.hideBattery: ' + $hideBattery);
-  // setting radio' value
- } else {
-  $hideBattery = 0;
-//  console.log('localStorage.hideBattery was undefined, now set to: ' + $hideBattery);
- }
- $("input[name=hideBattery][value='" + $hideBattery + "']").attr('checked', 'checked');
 
- if (localStorage.noAnimOnShake) {
-  $noAnimOnShake = localStorage.noAnimOnShake;
-//  console.log('localStorage.noAnimOnShake: ' + $noAnimOnShake);
-  // setting radio' value
- } else {
-  $noAnimOnShake = 0;
-//  console.log('localStorage.noAnimOnShake was undefined, now set to: ' + $noAnimOnShake);
- }
- $("input[name=noAnimOnShake][value='" + $noAnimOnShake + "']").attr('checked', 'checked');
-
-
- var $bgColorPicker = $('#bgColorPicker');
- if (localStorage.bgColor) {
-  $bgColorPicker[0].value = localStorage.bgColor;
- }
- 
  var $timeColorPicker = $('#timeColorPicker');
  if (localStorage.timeColor) {
   $timeColorPicker[0].value = localStorage.timeColor;
  }
  
+ var $bgColorPicker = $('#bgColorPicker');
+ if (localStorage.bgColor) {
+  $bgColorPicker[0].value = localStorage.bgColor;
+ }
+ 
 } 
 
 function getAndStoreConfigData() {
- var $bgColorPicker = $('#bgColorPicker');
  var $timeColorPicker = $('#timeColorPicker');
+ var $bgColorPicker = $('#bgColorPicker');
 
  var options = {
-  hideBattery:   $hideBattery,
-  noAnimOnShake: $noAnimOnShake,
-  bgColor:       $bgColorPicker.val(),
-  timeColor:     $timeColorPicker.val()
+  timeColor:     $timeColorPicker.val(),
+  bgColor:       $bgColorPicker.val()
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
- localStorage.hideBattery   = $hideBattery;
- localStorage.noAnimOnShake = $noAnimOnShake;
- localStorage.bgColor       = options.bgColor;
  localStorage.timeColor     = options.timeColor;
+ localStorage.bgColor       = options.bgColor;
 
  return options;
 }
