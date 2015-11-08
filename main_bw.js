@@ -23,35 +23,30 @@ function buttonHandler() {
  });
 }
 
-// Radio control for inverting colors
-var $invert;
-$("input[name=$invert]").change(function () {
- $invert = parseInt(this.value);
-});
-
-
 function loadOptions() {
+ var $invertCheckbox = $('#invertCheckbox');
+
  if (localStorage.invert) {
-  $invert = localStorage.invert;
-//  console.log('localStorage.invert: ' + $invert);
-  // setting radio' value
- } else {
-  $invert = 0;
-//  console.log('localStorage.invert was undefined, now set to: ' + $invert);
+  $invertCheckbox[0].checked = localStorage.invert === '1';
  }
- $("input[name=invert][value='" + $invert + "']").attr('checked', 'checked');
 
 } 
 
 function getAndStoreConfigData() {
-
+ var $invertCheckbox = $('#invertCheckbox');
+ var $invertValue = 0;
+ if ($invertCheckbox[0].checked) {
+   $invertValue = 1; 
+ }
+ console.log('invert value: ' + $invertValue);
+ 
  var options = {
-  invert:        $invert
+  invert: $invertValue
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
- localStorage.invert        = $invert;
+ localStorage.invert = $invertValue;
 
  return options;
 }
