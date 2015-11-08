@@ -42,11 +42,11 @@ function getAndStoreConfigData() {
  var $timeColorPicker = $('#timeColorPicker');
  var $bgColorPicker = $('#bgColorPicker');
 
- if ($bgColorPicker.val() == $timeColorPicker.val()) {
-  console.log('matching');
-  alert('Please select different colors for time and background');
-  return
- }
+// if ($bgColorPicker.val() == $timeColorPicker.val()) {
+//  console.log('matching');
+//  alert('Please select different colors for time and background');
+//  return
+// }
  
  var options = {
   timeColor:     $timeColorPicker.val(),
