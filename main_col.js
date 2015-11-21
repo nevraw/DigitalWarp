@@ -26,9 +26,9 @@ function buttonHandler() {
 
 function loadOptions() {
 
- var $timeColorPicker = $('#timeColorPicker');
- if (localStorage.timeColor) {
-  $timeColorPicker[0].value = localStorage.timeColor;
+ var $lineColorPicker = $('#lineColorPicker');
+ if (localStorage.lineColor) {
+  $lineColorPicker[0].value = localStorage.lineColor;
  }
  
  var $bgColorPicker = $('#bgColorPicker');
@@ -39,17 +39,17 @@ function loadOptions() {
 } 
 
 function getAndStoreConfigData() {
- var $timeColorPicker = $('#timeColorPicker');
+ var $lineColorPicker = $('#lineColorPicker');
  var $bgColorPicker = $('#bgColorPicker');
 
  var options = {
-  timeColor:     $timeColorPicker.val(),
+  lineColor:     $lineColorPicker.val(),
   bgColor:       $bgColorPicker.val()
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
- localStorage.timeColor     = options.timeColor;
+ localStorage.lineColor     = options.lineColor;
  localStorage.bgColor       = options.bgColor;
 
  return options;
