@@ -31,11 +31,6 @@ function loadOptions() {
   $lineColorPicker[0].value = localStorage.lineColor;
  }
  
- var $bgColorPicker = $('#bgColorPicker');
- if (localStorage.bgColor) {
-  $bgColorPicker[0].value = localStorage.bgColor;
- }
-
  var $invertCheckbox = $('#invertCheckbox');
 
  if (localStorage.invert) {
@@ -46,7 +41,6 @@ function loadOptions() {
 
 function getAndStoreConfigData() {
  var $lineColorPicker = $('#lineColorPicker');
- var $bgColorPicker = $('#bgColorPicker');
 
  var $invertCheckbox = $('#invertCheckbox');
  var $invertValue = 0;
@@ -57,15 +51,13 @@ function getAndStoreConfigData() {
 
  var options = {
   invert:        $invertValue,
-  lineColor:     $lineColorPicker.val(),
-  bgColor:       $bgColorPicker.val()
+  lineColor:     $lineColorPicker.val()
  };
  
  console.log('Got options: ' + JSON.stringify(options));
 
- localStorage.lineColor     = options.lineColor;
- localStorage.bgColor       = options.bgColor;
- localStorage.invert = $invertValue;
+ localStorage.lineColor = options.lineColor;
+ localStorage.invert    = $invertValue;
 
  return options;
 }
