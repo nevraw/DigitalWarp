@@ -35,6 +35,12 @@ function loadOptions() {
  if (localStorage.bgColor) {
   $bgColorPicker[0].value = localStorage.bgColor;
  }
+
+ var $invertCheckbox = $('#invertCheckbox');
+
+ if (localStorage.invert) {
+  $invertCheckbox[0].checked = localStorage.invert === '1';
+ }
  
 } 
 
@@ -42,7 +48,15 @@ function getAndStoreConfigData() {
  var $lineColorPicker = $('#lineColorPicker');
  var $bgColorPicker = $('#bgColorPicker');
 
+ var $invertCheckbox = $('#invertCheckbox');
+ var $invertValue = 0;
+ if ($invertCheckbox[0].checked) {
+   $invertValue = 1; 
+ }
+ console.log('invert value: ' + $invertValue);
+
  var options = {
+  invert:        $invertValue,
   lineColor:     $lineColorPicker.val(),
   bgColor:       $bgColorPicker.val()
  };
@@ -51,6 +65,7 @@ function getAndStoreConfigData() {
 
  localStorage.lineColor     = options.lineColor;
  localStorage.bgColor       = options.bgColor;
+ localStorage.invert = $invertValue;
 
  return options;
 }
