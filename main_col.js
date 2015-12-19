@@ -26,9 +26,9 @@ function buttonHandler() {
 
 function loadOptions() {
 
- var $lineColorPicker = $('#lineColorPicker');
- if (localStorage.lineColor) {
-  $lineColorPicker[0].value = localStorage.lineColor;
+ var $numColorPicker = $('#numColorPicker');
+ if (localStorage.numColor) {
+  $numColorPicker[0].value = localStorage.numColor;
  }
  
  var $invertCheckbox = $('#invertCheckbox');
@@ -40,23 +40,23 @@ function loadOptions() {
 } 
 
 function getAndStoreConfigData() {
- var $lineColorPicker = $('#lineColorPicker');
+ var $numColorPicker = $('#numColorPicker');
 
  var $invertCheckbox = $('#invertCheckbox');
  var $invertValue = 0;
  if ($invertCheckbox[0].checked) {
    $invertValue = 1; 
  }
- console.log('invert value: ' + $invertValue);
+// console.log('invert value: ' + $invertValue);
 
  var options = {
-  invert:        $invertValue,
-  lineColor:     $lineColorPicker.val()
+  invert:       $invertValue,
+  numColor:     $numColorPicker.val()
  };
  
- console.log('Got options: ' + JSON.stringify(options));
+// console.log('Got options: ' + JSON.stringify(options));
 
- localStorage.lineColor = options.lineColor;
+ localStorage.numColor = options.numColor;
  localStorage.invert    = $invertValue;
 
  return options;
